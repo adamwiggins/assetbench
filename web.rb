@@ -7,7 +7,7 @@ require 'dalli'
 CACHE = Dalli::Client.new
 
 require 'rack/cache'
-use Rack::Cache, :metastore => CACHE
+use Rack::Cache, :metastore => CACHE, :entitystore => CACHE
 
 %w(1k 16k 64k).each do |size|
   get "/dyno/#{size}" do
