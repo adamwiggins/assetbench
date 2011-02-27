@@ -1,2 +1,2 @@
 require './web'
-run Sinatra::Application
+run Rack::Cascade.new [ VarnishApp, DynoApp, CachedApp ]
